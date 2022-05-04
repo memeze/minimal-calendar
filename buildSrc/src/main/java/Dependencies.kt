@@ -11,6 +11,7 @@ object BuildPlugins {
  */
 object Libs {
     object AndroidX {
+        val appcompat by lazy { "androidx.appcompat:appcompat:${Versions.APPCOMPAT}" }
         val activityCompose by lazy { "androidx.activity:activity-compose:${Versions.ACTIVITY}" }
     }
 

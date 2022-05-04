@@ -55,10 +55,13 @@ android {
 }
 
 dependencies {
+
+    implementation(Libs.AndroidX.appcompat)
+    implementation(Libs.AndroidX.activityCompose)
+
     implementation(Libs.Compose.material)
     implementation(Libs.Compose.animation)
     implementation(Libs.Compose.uiTooling)
-    implementation(Libs.AndroidX.activityCompose)
 
     implementation(Libs.Accompanist.pager)
 
