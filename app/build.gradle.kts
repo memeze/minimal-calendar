@@ -56,22 +56,6 @@ dependencies {
     implementation(Libs.Compose.uiTooling)
     implementation(Libs.AndroidX.activityCompose)
 
-    implementation(Libs.Accompanist.insets)
-    implementation(Libs.Accompanist.insetsUi)
-    implementation(Libs.Accompanist.systemUiController)
-    implementation(Libs.Accompanist.appCompatTheme)
-    implementation(Libs.Accompanist.pager)
-    implementation(Libs.Accompanist.pagerIndicators)
-    implementation(Libs.Accompanist.swipeRefresh)
-    implementation(Libs.Accompanist.placeHolder)
-    implementation(Libs.Accompanist.drawablePainter)
-    implementation(Libs.Accompanist.flowLayout)
-    implementation(Libs.Accompanist.permissions)
-    implementation(Libs.Accompanist.navigationAnimation)
-    implementation(Libs.Accompanist.navigationMaterial)
-
-    coreLibraryDesugaring(Libs.Desugar.jdk) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
-
     implementation(Libs.Lifecycle.runtime)
 
     implementation("com.github.memeze:minimal-calendar:1.0.0")
