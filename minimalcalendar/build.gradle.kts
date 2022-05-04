@@ -62,7 +62,7 @@ dependencies {
 
     implementation(Libs.Accompanist.pager)
 
-    coreLibraryDesugaring(Libs.Desugar.jdk)
+    coreLibraryDesugaring(Libs.Desugar.jdk) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
 
     testImplementation(Libs.Test.junit)
     androidTestImplementation(Libs.AndroidTest.junit)
