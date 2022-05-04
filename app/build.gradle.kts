@@ -74,6 +74,8 @@ dependencies {
 
     implementation(Libs.Lifecycle.runtime)
 
+    implementation("com.github.memeze:minimal-calendar:1.0.0")
+
     testImplementation(Libs.Test.junit)
     androidTestImplementation(Libs.AndroidTest.junit)
     androidTestImplementation(Libs.AndroidTest.espresso)
