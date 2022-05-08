@@ -23,6 +23,7 @@ import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.memeze.minimalcalendar.CalendarType
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_HEIGHT
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_WIDTH
 import com.memeze.minimalcalendar.config.Constant.DATE_PATTERN
@@ -44,6 +45,7 @@ import java.util.*
 fun MinimalCalendar(
     modifier: Modifier = Modifier,
     initDate: LocalDate = LocalDate.now(),
+    calendarType: CalendarType = CalendarType.MONTH,
     calendarColors: MinimalCalendarColors = MinimalCalendarTheme.colors(),
     calendarConfig: MinimalCalendarConfig = MinimalCalendarConfig()
 ) {
