@@ -4,20 +4,6 @@ plugins {
     id("maven-publish")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "com.memeze"
-            artifactId = "minimalcalendar"
-            version = "1.0.2"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-}
-
 android {
     compileSdk = ConfigData.COMPILE_SDK
 
@@ -71,4 +57,17 @@ dependencies {
     androidTestImplementation(Libs.AndroidTest.junit)
     androidTestImplementation(Libs.AndroidTest.espresso)
     androidTestImplementation(Libs.AndroidTest.compose)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.memeze"
+                artifactId = "minimalcalendar"
+                version = "1.0.1"
+            }
+        }
+    }
 }
