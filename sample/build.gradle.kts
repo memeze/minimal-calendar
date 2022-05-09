@@ -11,8 +11,8 @@ android {
         applicationId = ConfigData.APPLICATION_ID
         minSdk = ConfigData.MIN_SDK
         targetSdk = ConfigData.TARGET_SDK
-        versionCode = ConfigData.VERSION_CODE
-        versionName = ConfigData.VERSION_NAME
+        versionCode = 1
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
