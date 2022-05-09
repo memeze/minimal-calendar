@@ -43,7 +43,7 @@ import java.util.*
 fun MinimalCalendar(
     modifier: Modifier = Modifier,
     initDate: LocalDate = LocalDate.now(),
-    calendarType: CalendarType = CalendarType.MONTH,
+    onSelectDate: (date: LocalDate) -> Unit,
     calendarColors: MinimalCalendarColors = MinimalCalendarTheme.colors(),
     calendarConfig: MinimalCalendarConfig = MinimalCalendarConfig()
 ) {
@@ -61,6 +61,10 @@ fun MinimalCalendar(
             calendarConfig.yearRange.first + pagerState.currentPage / 12,
             pagerState.currentPage % 12 + 1
         )
+    }
+
+    LaunchedEffect(selectedDate) {
+        onSelectDate(selectedDate)
     }
 
     CompositionLocalProvider(LocalContentColor provides calendarColors.defaultColor) {
