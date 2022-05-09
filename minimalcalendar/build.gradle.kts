@@ -77,3 +77,16 @@ dependencies {
     androidTestImplementation(Libs.AndroidTest.espresso)
     androidTestImplementation(Libs.AndroidTest.compose)
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.memeze"
+                artifactId = "minimalcalendar"
+                version = "1.0.4"
+            }
+        }
+    }
+}
