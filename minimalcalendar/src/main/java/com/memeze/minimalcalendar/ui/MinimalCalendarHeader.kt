@@ -23,7 +23,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.memeze.minimalcalendar.R
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
@@ -31,7 +30,6 @@ import java.time.LocalDate
 import java.time.YearMonth
 
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalPagerApi::class)
 @Composable
 internal fun MinimalCalendarHeader(
     modifier: Modifier = Modifier,

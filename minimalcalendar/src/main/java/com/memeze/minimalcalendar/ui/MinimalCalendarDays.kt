@@ -1,6 +1,5 @@
 package com.memeze.minimalcalendar.ui
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,7 +21,6 @@ import com.memeze.minimalcalendar.config.Constant.DAY_OF_WEEK_COUNT
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
 import java.time.LocalDate
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun MinimalCalendarDays(
     modifier: Modifier = Modifier,

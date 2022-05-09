@@ -38,6 +38,17 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.COMPOSE
     }
+
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs.plus(
+            listOf(
+                "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi",
+                "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+                "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+                "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi"
+            )
+        )
+    }
 }
 
 dependencies {

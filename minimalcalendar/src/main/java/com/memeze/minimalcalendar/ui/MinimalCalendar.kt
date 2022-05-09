@@ -20,7 +20,6 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.memeze.minimalcalendar.CalendarType
@@ -40,7 +39,6 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MinimalCalendar(
     modifier: Modifier = Modifier,

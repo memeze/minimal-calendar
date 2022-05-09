@@ -8,12 +8,10 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ScaleButton(
     modifier: Modifier = Modifier,
