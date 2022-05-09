@@ -3,9 +3,9 @@ package com.memeze.minimalcalendar.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,7 +37,7 @@ internal fun MinimalCalendarDays(
 
     LazyVerticalGrid(
         modifier = modifier,
-        cells = GridCells.Fixed(DAY_OF_WEEK_COUNT)
+        columns = GridCells.Fixed(DAY_OF_WEEK_COUNT)
     ) {
         for (x in 0 until calendarDatesData.first) {
             item { Box(modifier = Modifier.size(DAY_ITEM_SIZE.dp)) }
