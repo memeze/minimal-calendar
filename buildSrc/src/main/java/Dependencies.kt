@@ -2,8 +2,9 @@
  * To define plugins
  */
 object BuildPlugins {
-    val android by lazy { "com.android.tools.build:gradle:${Versions.GRADLE_PLUGIN}" }
-    val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}" }
+    val application by lazy { "com.android.application" }
+    val library by lazy { "com.android.library" }
+    val kotlin by lazy { "org.jetbrains.kotlin.android" }
 }
 
 /**
