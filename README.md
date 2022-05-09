@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.github.memeze:minimal-calendar:<latest-version>'
 }
 ```
-> See [here](https://github.com/memeze/minimal-calendar/edit/main/README.md#latest-version) for the `<latest-version>`
+> See [here](https://github.com/memeze/minimal-calendar#latest-version) for the `<latest-version>`
 
 
 ## Usage
