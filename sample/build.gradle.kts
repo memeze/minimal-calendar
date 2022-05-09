@@ -49,9 +49,8 @@ android {
 }
 
 dependencies {
-//    implementation(project(":minimalcalendar"))
-    coreLibraryDesugaring(Libs.Desugar.jdk) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
-    implementation("com.github.memeze:minimal-calendar:1.1.1")
+    implementation(project(":minimalcalendar"))
+    coreLibraryDesugaring(Libs.Desugar.jdk)
 
     implementation(Libs.Core.ktx)
     implementation(Libs.AndroidX.appcompat)
