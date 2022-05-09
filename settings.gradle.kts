@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MinimalCalendar"
-include(":app")
+include(":sample")
 include(":minimalcalendar")

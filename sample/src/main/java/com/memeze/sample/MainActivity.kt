@@ -1,4 +1,4 @@
-package com.memeze.minimalcalendar
+package com.memeze.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.memeze.minimalcalendar.ui.MinimalCalendar
-import com.memeze.minimalcalendar.ui.theme.MinimalCalendarTheme
+import com.memeze.sample.ui.theme.MinimalCalendarTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

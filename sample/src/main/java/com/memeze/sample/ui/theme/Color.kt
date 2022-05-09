@@ -1,4 +1,4 @@
-package com.memeze.minimalcalendar.ui.theme
+package com.memeze.sample.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
