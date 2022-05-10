@@ -10,8 +10,8 @@ This calendar library is built with jetpack compose. Easy, simple, and minimal.
 The stable version of the library is the version that uses `Compose 1.1.x`, and it can be used as follows to cope with the `Compose 1.2.x` version.
 |Compose      |Library                                                                                                    |
 |:------------|:---------------------------------------------------------------------------------------------------------:|
-|1.1.x        |[![](https://img.shields.io/badge/JitPack-v1.0.5-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
-|1.2.x (alpha)|[![](https://img.shields.io/badge/JitPack-v1.1.2-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+|1.1.x        |[![](https://img.shields.io/badge/JitPack-v1.0.6-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+|1.2.x (alpha)|[![](https://img.shields.io/badge/JitPack-v1.1.3-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
 
 
 ## Setup
@@ -57,6 +57,7 @@ dependencies {
 </br>
 
 ## Usage
+#### calendar
 ```kotlin
 fun MinimalCalendar(
     modifier: Modifier = Modifier,
@@ -65,4 +66,53 @@ fun MinimalCalendar(
     calendarColors: MinimalCalendarColors = MinimalCalendarTheme.colors(),
     calendarConfig: MinimalCalendarConfig = MinimalCalendarConfig()
 )
+```
+#### colors
+```kotlin
+data class MinimalCalendarColors(
+    val defaultColor: Color,
+    val backgroundColor: Color,
+    val headerBackgroundColor: Color,
+    val headerDateTextColor: Color,
+    val headerTodayIconColor: Color,
+    val headerArrowIconColor: Color,
+    val headerSelectIconColor: Color,
+    val selectionBackgroundColor: Color,
+    val selectionItemTextColor: Color,
+    val selectionItemSelectedBackgroundColor: Color,
+    val selectionItemSelectedTextColor: Color,
+    val selectionButtonBackgroundColor: Color,
+    val selectionButtonTextColor: Color,
+    val weekBackgroundColor: Color,
+    val weekTextColor: Color,
+    val dateTextColor: Color,
+    val todayBackgroundColor: Color,
+    val todayTextColor: Color,
+    val selectedBackgroundColor: Color,
+    val selectedTextColor: Color,
+)
+```
+#### config
+```kotlin
+data class MinimalCalendarConfig(
+    val yearRange: IntRange = IntRange(1900, 2100),
+    val locale: Locale = Locale.getDefault()
+)
+```
+
+## License
+```
+ Copyright 2022 memeze
+
+ Licensed under the Apache License, Version 2.0 (the "License")
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
 ```
