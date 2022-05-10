@@ -85,7 +85,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.memeze"
                 artifactId = "minimalcalendar"
-                version = "1.1.0"
+                version = "1.1.3"
             }
         }
     }
