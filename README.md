@@ -5,15 +5,15 @@ This calendar library is built with jetpack compose. Easy, simple, and minimal.
 ![GitHub Repo stars](https://img.shields.io/github/stars/memeze/minimal-calendar?color=yellow)
 
 ## Latest version
-|Compose|Accompanist|Library|
-|:-|:-|:-:|
-|1.1.x|0.23.1|[![](https://img.shields.io/badge/JitPack-v1.0.4-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
-|1.2.x|0.24.6-alpha|[![](https://img.shields.io/badge/JitPack-v1.1.1-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+The stable version of the library is the version that uses `Compose 1.1.x`, and it can be used as follows to cope with the `Compose 1.2.x` version.
+|Compose      |Library                                                                                                    |
+|:------------|:---------------------------------------------------------------------------------------------------------:|
+|1.1.x        |[![](https://img.shields.io/badge/JitPack-v1.0.5-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+|1.2.x (alpha)|[![](https://img.shields.io/badge/JitPack-v1.1.2-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
 
 
 ## Setup
-#### Step.1 
-[Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)](https://developer.android.com/studio/write/java8-support#library-desugaring). 
+👉 _**Step.1**_ [Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)](https://developer.android.com/studio/write/java8-support#library-desugaring).  
 Include the following in your app module’s `build.gradle(app)` file:
 ```groovy
 android {
@@ -29,8 +29,9 @@ dependencies {
 ```
 > See [here](https://mvnrepository.com/artifact/com.android.tools/desugar_jdk_libs) for the `<latest-version>`
 
-#### Step.2
-Add it in your `setting.gradle`:
+</br>
+
+👉 _**Step.2**_ Add it in your `setting.gradle`:
 ```groovy
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -41,8 +42,9 @@ dependencyResolutionManagement {
 }
 ```
 
-#### Step.3
-Add the dependency your `build.gradle(app)`:
+</br>
+
+👉 **Step.3** _Add the dependency your `build.gradle(app)`:_
 ```groovy
 dependencies {
     implementation 'com.github.memeze:minimal-calendar:<latest-version>'
@@ -50,13 +52,14 @@ dependencies {
 ```
 > See [here](https://github.com/memeze/minimal-calendar#latest-version) for the `<latest-version>`
 
+</br>
 
 ## Usage
 ```kotlin
 fun MinimalCalendar(
     modifier: Modifier = Modifier,
     initDate: LocalDate = LocalDate.now(),
-    calendarType: CalendarType = CalendarType.MONTH,
+    onSelectDate: (date: LocalDate) -> Unit,
     calendarColors: MinimalCalendarColors = MinimalCalendarTheme.colors(),
     calendarConfig: MinimalCalendarConfig = MinimalCalendarConfig()
 )
