@@ -1,8 +1,26 @@
+/*
+ * Copyright 2022 memeze
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.memeze.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,18 +28,24 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.memeze.minimalcalendar.ui.MinimalCalendar
 import com.memeze.sample.ui.theme.MinimalCalendarTheme
+import java.time.format.DateTimeFormatter
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MinimalCalendarTheme {
+                var selectDate by remember { mutableStateOf("") }
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
@@ -30,30 +54,31 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) { innerPadding ->
-                    Surface(
+                    Column(
                         modifier = Modifier
-                            .padding(innerPadding)
-                            .padding(16.dp),
-                        shape = RoundedCornerShape(16.dp),
-                        elevation = 4.dp
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        MinimalCalendar()
+                        Surface(
+                            modifier = Modifier
+                                .padding(16.dp),
+                            shape = RoundedCornerShape(16.dp),
+                            elevation = 4.dp
+                        ) {
+                            MinimalCalendar(
+                                onSelectDate = { date ->
+                                    selectDate = date.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"))
+                                }
+                            )
+                        }
+                        Text(
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            text = selectDate
+                        )
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MinimalCalendarTheme {
-        Greeting("Android")
     }
 }

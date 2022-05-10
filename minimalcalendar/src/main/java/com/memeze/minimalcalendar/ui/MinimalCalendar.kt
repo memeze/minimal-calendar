@@ -1,3 +1,19 @@
+/*
+ * Copyright 2022 memeze
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.memeze.minimalcalendar.ui
 
 import androidx.compose.animation.slideInVertically
@@ -22,7 +38,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.memeze.minimalcalendar.CalendarType
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_HEIGHT
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_WIDTH
 import com.memeze.minimalcalendar.config.Constant.DATE_PATTERN
@@ -43,7 +58,7 @@ import java.util.*
 fun MinimalCalendar(
     modifier: Modifier = Modifier,
     initDate: LocalDate = LocalDate.now(),
-    calendarType: CalendarType = CalendarType.MONTH,
+    onSelectDate: (date: LocalDate) -> Unit,
     calendarColors: MinimalCalendarColors = MinimalCalendarTheme.colors(),
     calendarConfig: MinimalCalendarConfig = MinimalCalendarConfig()
 ) {
@@ -61,6 +76,10 @@ fun MinimalCalendar(
             calendarConfig.yearRange.first + pagerState.currentPage / 12,
             pagerState.currentPage % 12 + 1
         )
+    }
+
+    LaunchedEffect(selectedDate) {
+        onSelectDate(selectedDate)
     }
 
     CompositionLocalProvider(LocalContentColor provides calendarColors.defaultColor) {
