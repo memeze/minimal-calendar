@@ -4,6 +4,8 @@ This calendar library is built with jetpack compose. Easy, simple, and minimal.
 ![API](https://img.shields.io/badge/API-21+-blue) 
 ![GitHub Repo stars](https://img.shields.io/github/stars/memeze/minimal-calendar?color=yellow)
 
+<img src="image/minimal-calendar-main.jpg" width="250" height="300"/> <img src="image/minimal-calendar-select.jpg" width="250" height="300"/> <img src="image/minimal-calendar-dark.jpg" width="250" height="300"/>
+
 ## Latest version
 The stable version of the library is the version that uses `Compose 1.1.x`, and it can be used as follows to cope with the `Compose 1.2.x` version.
 |Compose      |Library                                                                                                    |
