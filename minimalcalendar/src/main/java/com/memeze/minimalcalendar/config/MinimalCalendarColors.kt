@@ -35,8 +35,8 @@ data class MinimalCalendarColors(
     val weekBackgroundColor: Color,
     val weekTextColor: Color,
     val dateTextColor: Color,
-    val todayBackgroundColor: Color,
-    val todayTextColor: Color,
-    val selectedBackgroundColor: Color,
-    val selectedTextColor: Color,
+    val dateTodayBackgroundColor: Color,
+    val dateTodayTextColor: Color,
+    val dateSelectedBackgroundColor: Color,
+    val dateSelectedTextColor: Color,
 )

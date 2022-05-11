@@ -23,26 +23,26 @@ import androidx.compose.ui.graphics.Color
 object MinimalCalendarTheme {
     @Composable
     fun colors(
-        defaultColor: Color = MaterialTheme.colors.onBackground,
+        defaultColor: Color = MaterialTheme.colors.primary,
         backgroundColor: Color = MaterialTheme.colors.background,
         headerBackgroundColor: Color = backgroundColor,
-        headerDateTextColor: Color = defaultColor,
-        headerTodayIconColor: Color = defaultColor,
-        headerArrowIconColor: Color = defaultColor,
-        headerSelectIconColor: Color = MaterialTheme.colors.primary,
+        headerDateTextColor: Color = MaterialTheme.colors.onBackground,
+        headerTodayIconColor: Color = MaterialTheme.colors.onBackground,
+        headerArrowIconColor: Color = MaterialTheme.colors.onBackground,
+        headerSelectIconColor: Color = defaultColor,
         selectionBackgroundColor: Color = backgroundColor,
-        selectionItemTextColor: Color = defaultColor,
-        selectionItemSelectedBackgroundColor: Color = MaterialTheme.colors.primary.copy(.1f),
-        selectionItemSelectedTextColor: Color = defaultColor,
-        selectionButtonBackgroundColor: Color = MaterialTheme.colors.primary.copy(.5f),
+        selectionItemTextColor: Color = MaterialTheme.colors.onBackground,
+        selectionItemSelectedBackgroundColor: Color = defaultColor.copy(.1f),
+        selectionItemSelectedTextColor: Color = MaterialTheme.colors.onBackground,
+        selectionButtonBackgroundColor: Color = defaultColor.copy(.5f),
         selectionButtonTextColor: Color = MaterialTheme.colors.onPrimary,
         weekBackgroundColor: Color = backgroundColor,
-        weekTextColor: Color = defaultColor.copy(.3f),
-        dateTextColor: Color = defaultColor,
-        selectedBackgroundColor: Color = MaterialTheme.colors.primary.copy(.5f),
-        selectedTextColor: Color = MaterialTheme.colors.onPrimary,
-        todayBackgroundColor: Color = MaterialTheme.colors.primary.copy(.1f),
-        todayTextColor: Color = MaterialTheme.colors.onSurface,
+        weekTextColor: Color = MaterialTheme.colors.onBackground.copy(.3f),
+        dateTextColor: Color = MaterialTheme.colors.onBackground,
+        dateSelectedBackgroundColor: Color = defaultColor.copy(.5f),
+        dateSelectedTextColor: Color = MaterialTheme.colors.onPrimary,
+        dateTodayBackgroundColor: Color = defaultColor.copy(.1f),
+        dateTodayTextColor: Color = MaterialTheme.colors.onSurface
     ): MinimalCalendarColors {
         return MinimalCalendarColors(
             defaultColor = defaultColor,
@@ -61,10 +61,10 @@ object MinimalCalendarTheme {
             weekBackgroundColor = weekBackgroundColor,
             weekTextColor = weekTextColor,
             dateTextColor = dateTextColor,
-            selectedTextColor = selectedTextColor,
-            todayTextColor = todayTextColor,
-            selectedBackgroundColor = selectedBackgroundColor,
-            todayBackgroundColor = todayBackgroundColor
+            dateSelectedTextColor = dateSelectedTextColor,
+            dateSelectedBackgroundColor = dateSelectedBackgroundColor,
+            dateTodayTextColor = dateTodayTextColor,
+            dateTodayBackgroundColor = dateTodayBackgroundColor
         )
     }
 }

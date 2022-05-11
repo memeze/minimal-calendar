@@ -88,14 +88,14 @@ private fun MinimalCalendarDay(
     var readyToDraw by remember { mutableStateOf(false) }
 
     val dateBackgroundColor = when {
-        isSelected -> calendarColors.selectedBackgroundColor
-        isToday -> calendarColors.todayBackgroundColor
+        isSelected -> calendarColors.dateSelectedBackgroundColor
+        isToday -> calendarColors.dateTodayBackgroundColor
         else -> Color.Transparent
     }
 
     val dateTextColor = when {
-        isSelected -> calendarColors.selectedTextColor
-        else -> calendarColors.todayTextColor
+        isSelected -> calendarColors.dateSelectedTextColor
+        else -> calendarColors.dateTodayTextColor
     }
 
     Box(
