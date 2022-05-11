@@ -10,8 +10,8 @@ This calendar library is built with jetpack compose. Easy, simple, and minimal.
 The stable version of the library is the version that uses `Compose 1.1.x`, and it can be used as follows to cope with the `Compose 1.2.x` version.
 |Compose      |Library                                                                                                    |
 |:------------|:---------------------------------------------------------------------------------------------------------:|
-|1.1.x        |[![](https://img.shields.io/badge/JitPack-v1.0.6-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
-|1.2.x (alpha)|[![](https://img.shields.io/badge/JitPack-v1.1.3-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+|1.1.x        |[![](https://img.shields.io/badge/JitPack-v1.0.7-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
+|1.2.x (alpha)|[![](https://img.shields.io/badge/JitPack-v1.1.4-brightgreen)](https://jitpack.io/#memeze/minimal-calendar)|
 
 
 ## Setup
@@ -86,10 +86,10 @@ data class MinimalCalendarColors(
     val weekBackgroundColor: Color,
     val weekTextColor: Color,
     val dateTextColor: Color,
-    val todayBackgroundColor: Color,
-    val todayTextColor: Color,
-    val selectedBackgroundColor: Color,
-    val selectedTextColor: Color,
+    val dateTodayBackgroundColor: Color,
+    val dateTodayTextColor: Color,
+    val dateSelectedBackgroundColor: Color,
+    val dateSelectedTextColor: Color
 )
 ```
 #### config
