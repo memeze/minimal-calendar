@@ -16,9 +16,11 @@
 
 package com.memeze.minimalcalendar.ui
 
-import androidx.compose.animation.*
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,6 +30,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.*
@@ -58,7 +61,8 @@ internal fun MinimalCalendarHeader(
     onClickSelectDateBox: () -> Unit,
     onClickPrev: () -> Unit,
     onClickNext: () -> Unit,
-    onClickToday: () -> Unit
+    onClickToday: () -> Unit,
+    onClickSelect: () -> Unit
 ) {
     val defaultStyle = MaterialTheme.typography.h5
     var autoTextStyle by remember { mutableStateOf(defaultStyle) }
@@ -117,11 +121,7 @@ internal fun MinimalCalendarHeader(
             }
         }
         Spacer(modifier = Modifier.weight(1f))
-        AnimatedVisibility(
-            visible = !showSelectDateBox,
-            enter = fadeIn(animationSpec = tween(100)),
-            exit = fadeOut(animationSpec = tween(100))
-        ) {
+        if (!showSelectDateBox) {
             Row {
                 AnimatedVisibility(
                     visible = ((currentMonth != YearMonth.now()) || (selectedDate != LocalDate.now())),
@@ -144,6 +144,7 @@ internal fun MinimalCalendarHeader(
                 ) {
                     ScaleButton(
                         modifier = Modifier.size(48.dp),
+                        pressScale = .6f,
                         enabled = pagerState.currentPage - 1 >= 0,
                         onClick = onClickPrev
                     ) {
@@ -154,6 +155,7 @@ internal fun MinimalCalendarHeader(
                     }
                     ScaleButton(
                         modifier = Modifier.size(48.dp),
+                        pressScale = .6f,
                         enabled = pagerState.currentPage + 1 < pagerState.pageCount,
                         onClick = onClickNext
                     ) {
@@ -163,6 +165,18 @@ internal fun MinimalCalendarHeader(
                         )
                     }
                 }
+            }
+        } else {
+            ScaleButton(
+                modifier = Modifier.size(48.dp),
+                pressScale = .6f,
+                onClick = onClickSelect
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Done,
+                    contentDescription = "Select",
+                    tint = calendarColors.headerSelectIconColor
+                )
             }
         }
     }

@@ -66,16 +66,16 @@ fun MinimalCalendar(
     var selectedDate by remember { mutableStateOf(initDate) }
     var currentMonth by remember { mutableStateOf(YearMonth.now()) }
     var showSelectDateBox by remember { mutableStateOf(false) }
+    var selectedYearMonth by remember { mutableStateOf(currentMonth) }
 
-    val pagerState = rememberPagerState(
-        initialPage = (selectedDate.year - calendarConfig.yearRange.first) * 12 + selectedDate.monthValue - 1
-    )
+    val initPage = (selectedDate.year - calendarConfig.yearRange.first) * 12 + selectedDate.monthValue - 1
+    var currentPageIndex by remember { mutableStateOf(initPage) }
+    val pagerState = rememberPagerState(initialPage = currentPageIndex)
 
     LaunchedEffect(pagerState.currentPage) {
-        currentMonth = YearMonth.of(
-            calendarConfig.yearRange.first + pagerState.currentPage / 12,
-            pagerState.currentPage % 12 + 1
-        )
+        val index = (pagerState.currentPage - currentPageIndex).toLong()
+        currentMonth = currentMonth.plusMonths(index)
+        currentPageIndex = pagerState.currentPage
     }
 
     LaunchedEffect(selectedDate) {
@@ -95,7 +95,10 @@ fun MinimalCalendar(
                 selectedDate = selectedDate,
                 currentMonth = currentMonth,
                 showSelectDateBox = showSelectDateBox,
-                onClickSelectDateBox = { showSelectDateBox = !showSelectDateBox },
+                onClickSelectDateBox = {
+                    showSelectDateBox = !showSelectDateBox
+                    selectedYearMonth = currentMonth
+                },
                 onClickPrev = {
                     scope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage - 1)
@@ -107,14 +110,19 @@ fun MinimalCalendar(
                     }
                 },
                 onClickToday = {
-                    currentMonth = YearMonth.now()
                     selectedDate = LocalDate.now()
                     scope.launch {
-                        pagerState.scrollToPage(
-                            page = (selectedDate.year - calendarConfig.yearRange.first) * 12 + selectedDate.monthValue - 1
-                        )
+                        pagerState.scrollToPage(page = initPage)
                     }
                 },
+                onClickSelect = {
+                    scope.launch {
+                        showSelectDateBox = false
+                        pagerState.scrollToPage(
+                            page = (selectedYearMonth.year - calendarConfig.yearRange.first) * 12 + selectedYearMonth.monthValue - 1
+                        )
+                    }
+                }
             )
             Box(modifier = Modifier.height(CALENDAR_MAX_HEIGHT.dp)) {
                 androidx.compose.animation.AnimatedVisibility(
@@ -125,8 +133,6 @@ fun MinimalCalendar(
                     enter = slideInVertically(initialOffsetY = { -it }),
                     exit = slideOutVertically(targetOffsetY = { -it })
                 ) {
-                    var selectedYearMonth by remember { mutableStateOf(currentMonth) }
-
                     val initYearIndex = calendarConfig.yearRange.indexOf(selectedYearMonth.year) - 2
                     val yearState = rememberLazyListState(
                         initialFirstVisibleItemIndex = if (initYearIndex >= 0) initYearIndex else 0
@@ -147,62 +153,29 @@ fun MinimalCalendar(
                             .padding(horizontal = 16.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                SelectionList(
-                                    modifier = Modifier.weight(1f),
-                                    calendarColors = calendarColors,
-                                    scope = scope,
-                                    state = yearState,
-                                    range = calendarConfig.yearRange,
-                                    selectedItem = selectedYearMonth.year,
-                                    onSelectItem = { year ->
-                                        selectedYearMonth = selectedYearMonth.withYear(year)
-                                    }
-                                )
-                                SelectionList(
-                                    modifier = Modifier.weight(1f),
-                                    calendarColors = calendarColors,
-                                    scope = scope,
-                                    state = monthState,
-                                    range = (1..12),
-                                    selectedItem = selectedYearMonth.monthValue,
-                                    onSelectItem = { month ->
-                                        selectedYearMonth = selectedYearMonth.withMonth(month)
-                                    }
-                                )
-                            }
-                            ScaleButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                onClick = {
-                                    scope.launch {
-                                        showSelectDateBox = false
-                                        pagerState.scrollToPage(
-                                            page = (selectedYearMonth.year - calendarConfig.yearRange.first) * 12 + selectedYearMonth.monthValue - 1
-                                        )
-                                    }
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            SelectionList(
+                                modifier = Modifier.weight(1f),
+                                calendarColors = calendarColors,
+                                scope = scope,
+                                state = yearState,
+                                range = calendarConfig.yearRange,
+                                selectedItem = selectedYearMonth.year,
+                                onSelectItem = { year ->
+                                    selectedYearMonth = selectedYearMonth.withYear(year)
                                 }
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(44.dp)
-                                        .background(
-                                            color = calendarColors.selectionButtonBackgroundColor,
-                                            shape = RoundedCornerShape(8.dp)
-                                        ),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = "SELECT",
-                                        style = MaterialTheme.typography.button,
-                                        color = calendarColors.selectionButtonTextColor
-                                    )
+                            )
+                            SelectionList(
+                                modifier = Modifier.weight(1f),
+                                calendarColors = calendarColors,
+                                scope = scope,
+                                state = monthState,
+                                range = (1..12),
+                                selectedItem = selectedYearMonth.monthValue,
+                                onSelectItem = { month ->
+                                    selectedYearMonth = selectedYearMonth.withMonth(month)
                                 }
-                            }
+                            )
                         }
                     }
                 }
