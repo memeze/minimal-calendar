@@ -95,7 +95,8 @@ private fun MinimalCalendarDay(
 
     val dateTextColor = when {
         isSelected -> calendarColors.dateSelectedTextColor
-        else -> calendarColors.dateTodayTextColor
+        isToday -> calendarColors.dateTodayTextColor
+        else -> calendarColors.dateTextColor
     }
 
     Box(
