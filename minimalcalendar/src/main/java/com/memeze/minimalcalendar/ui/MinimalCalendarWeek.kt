@@ -29,6 +29,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.memeze.minimalcalendar.config.Constant
+import com.memeze.minimalcalendar.config.Constant.DEFAULT_PADDING
 import com.memeze.minimalcalendar.config.Constant.WEEK_HEIGHT
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
 import java.text.DateFormatSymbols
@@ -50,7 +52,7 @@ internal fun MinimalCalendarWeek(
             .fillMaxWidth()
             .height(WEEK_HEIGHT.dp)
             .background(calendarColors.weekBackgroundColor)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = DEFAULT_PADDING.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         week.forEach { day ->
