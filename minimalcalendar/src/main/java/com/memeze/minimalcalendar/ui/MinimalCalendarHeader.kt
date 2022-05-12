@@ -44,6 +44,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.PagerState
 import com.memeze.minimalcalendar.R
+import com.memeze.minimalcalendar.config.Constant.DEFAULT_PADDING
+import com.memeze.minimalcalendar.config.Constant.HEADER_HEIGHT
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
 import java.time.LocalDate
 import java.time.YearMonth
@@ -77,8 +79,8 @@ internal fun MinimalCalendarHeader(
         modifier = modifier
             .fillMaxWidth()
             .background(calendarColors.headerBackgroundColor)
-            .padding(start = 16.dp, top = 16.dp, end = 16.dp)
-            .height(56.dp),
+            .padding(start = DEFAULT_PADDING.dp, top = DEFAULT_PADDING.dp, end = DEFAULT_PADDING.dp)
+            .height(HEADER_HEIGHT.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         CompositionLocalProvider(

@@ -41,6 +41,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_HEIGHT
 import com.memeze.minimalcalendar.config.Constant.CALENDAR_MAX_WIDTH
 import com.memeze.minimalcalendar.config.Constant.DATE_PATTERN
+import com.memeze.minimalcalendar.config.Constant.DEFAULT_PADDING
 import com.memeze.minimalcalendar.config.Constant.SELECT_ITEM_HEIGHT
 import com.memeze.minimalcalendar.config.Constant.SELECT_LIST_HEIGHT
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
@@ -150,7 +151,7 @@ fun MinimalCalendar(
                                 color = calendarColors.selectionBackgroundColor,
                                 shape = RoundedCornerShape(8.dp)
                             )
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = DEFAULT_PADDING.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -185,7 +186,7 @@ fun MinimalCalendar(
                         calendarColors = calendarColors
                     )
                     HorizontalPager(
-                        modifier = Modifier.padding(horizontal = 16.dp),
+                        modifier = Modifier.padding(horizontal = DEFAULT_PADDING.dp),
                         count = (calendarConfig.yearRange.last - calendarConfig.yearRange.first + 1) * 12,
                         state = pagerState,
                         verticalAlignment = Alignment.Top
