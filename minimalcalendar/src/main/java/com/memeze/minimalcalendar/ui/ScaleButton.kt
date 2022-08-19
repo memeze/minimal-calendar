@@ -16,53 +16,61 @@
 
 package com.memeze.minimalcalendar.ui
 
-import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.Role
 
 @Composable
-fun ScaleButton(
+internal fun ScaleButton(
     modifier: Modifier = Modifier,
-    pressScale: Float = .9f,
+    pressScale: Float = .95f,
     enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable BoxScope.() -> Unit
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
     var pressed by remember { mutableStateOf(false) }
     val scale = animateFloatAsState(if (pressed) pressScale else 1f)
+    val alpha by animateFloatAsState(
+        targetValue = if (pressed) .5f else 1f,
+        animationSpec = tween(durationMillis = 150)
+    )
 
-    CompositionLocalProvider(
-        LocalContentAlpha provides if (pressed) ContentAlpha.medium else 1f,
-    ) {
+    CompositionLocalProvider(LocalContentAlpha provides alpha) {
         Box(
             modifier = modifier
+                .clickable(
+                    onClick = onClick,
+                    enabled = enabled,
+                    role = Role.Button,
+                    interactionSource = interactionSource,
+                    indication = null
+                )
                 .scale(scale.value)
-                .pointerInteropFilter {
+                .pointerInput(pressed) {
                     if (enabled) {
-                        when (it.action) {
-                            MotionEvent.ACTION_DOWN -> {
-                                pressed = true
-                            }
-                            MotionEvent.ACTION_UP -> {
-                                pressed = false
-                                onClick()
-                            }
-                            MotionEvent.ACTION_CANCEL -> {
-                                pressed = false
+                        awaitPointerEventScope {
+                            pressed = if (pressed) {
+                                waitForUpOrCancellation()
+                                false
+                            } else {
+                                awaitFirstDown(false)
+                                true
                             }
                         }
-                    } else {
-                        pressed = false
                     }
-                    true
                 },
             contentAlignment = Alignment.Center,
             content = content
