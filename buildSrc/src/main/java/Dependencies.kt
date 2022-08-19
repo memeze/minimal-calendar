@@ -31,7 +31,7 @@ object Libs {
     }
 
     object Desugar {
-        val jdk by lazy { "com.android.tools:desugar_jdk_libs:1.1.5" }
+        val jdk by lazy { "com.android.tools:desugar_jdk_libs:1.1.6" }
     }
 
     object Lifecycle {

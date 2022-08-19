@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.memeze.minimalcalendar.config.Constant
 import com.memeze.minimalcalendar.config.Constant.DEFAULT_PADDING
 import com.memeze.minimalcalendar.config.Constant.WEEK_HEIGHT
 import com.memeze.minimalcalendar.config.MinimalCalendarColors
