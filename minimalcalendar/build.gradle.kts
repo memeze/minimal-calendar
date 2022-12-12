@@ -38,6 +38,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.COMPOSE
     }
+    namespace = "com.memeze.minimalcalendar"
 
     kotlinOptions {
         freeCompilerArgs = freeCompilerArgs.plus(
