@@ -16,7 +16,7 @@
 
 package com.memeze.minimalcalendar.config
 
-object Constant {
+internal object Constant {
     const val DATE_PATTERN = "MMM y"
     const val DAY_OF_WEEK_COUNT = 7
     const val DAY_ITEM_SIZE = 56
