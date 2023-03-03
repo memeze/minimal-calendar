@@ -38,6 +38,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.COMPOSE
     }
+    namespace = "com.memeze.minimalcalendar"
 
     kotlinOptions {
         freeCompilerArgs = freeCompilerArgs.plus(
@@ -63,9 +64,14 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.activityCompose)
 
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.animation)
-    implementation(Libs.Compose.uiTooling)
+    val composeBom = platform(Libs.Compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation(Libs.Compose.material2)
+    implementation(Libs.Compose.uiToolingPreview)
+    debugImplementation(Libs.Compose.uiTooling)
+    androidTestImplementation(Libs.Compose.uiTestJunit)
+    debugImplementation(Libs.Compose.uiTestManifest)
 
     implementation(Libs.Accompanist.pager)
 

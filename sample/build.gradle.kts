@@ -46,6 +46,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    namespace = "com.memeze.sample"
 }
 
 dependencies {
@@ -54,9 +55,16 @@ dependencies {
     implementation(Libs.Core.ktx)
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.activityCompose)
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.animation)
-    implementation(Libs.Compose.uiTooling)
+
+    val composeBom = platform(Libs.Compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation(Libs.Compose.material2)
+    implementation(Libs.Compose.uiToolingPreview)
+    debugImplementation(Libs.Compose.uiTooling)
+    androidTestImplementation(Libs.Compose.uiTestJunit)
+    debugImplementation(Libs.Compose.uiTestManifest)
+
     implementation(Libs.Lifecycle.runtime)
     coreLibraryDesugaring(Libs.Desugar.jdk) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
     testImplementation(Libs.Test.junit)

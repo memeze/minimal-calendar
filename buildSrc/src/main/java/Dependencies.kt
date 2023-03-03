@@ -21,9 +21,14 @@ object Libs {
     }
 
     object Compose {
-        val material by lazy { "androidx.compose.material:material:${Versions.COMPOSE}" }
+        val bom by lazy { "androidx.compose:compose-bom:2022.10.00" }
         val animation by lazy { "androidx.compose.animation:animation:${Versions.COMPOSE}" }
-        val uiTooling by lazy { "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}" }
+        val material3 by lazy { "androidx.compose.material3:material3" }
+        val material2 by lazy { "androidx.compose.material:material" }
+        val uiToolingPreview by lazy { "androidx.compose.ui:ui-tooling" }
+        val uiTooling by lazy { "androidx.compose.ui:ui-tooling" }
+        val uiTestJunit by lazy { "androidx.compose.ui:ui-test-junit4" }
+        val uiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest" }
     }
 
     object Core {
