@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk = ConfigData.COMPILE_SDK
+    compileSdk = 33
 
     defaultConfig {
-        minSdk = ConfigData.MIN_SDK
-        targetSdk = ConfigData.TARGET_SDK
+        minSdk = 21
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -36,7 +36,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.COMPOSE
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
     namespace = "com.memeze.minimalcalendar"
 
@@ -61,26 +61,26 @@ android {
 
 dependencies {
 
-    implementation(Libs.AndroidX.appcompat)
-    implementation(Libs.AndroidX.activityCompose)
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.activity:activity-compose:1.5.1")
 
-    val composeBom = platform(Libs.Compose.bom)
+    val composeBom = platform("androidx.compose:compose-bom:2022.10.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
-    implementation(Libs.Compose.material2)
-    implementation(Libs.Compose.uiToolingPreview)
-    debugImplementation(Libs.Compose.uiTooling)
-    androidTestImplementation(Libs.Compose.uiTestJunit)
-    debugImplementation(Libs.Compose.uiTestManifest)
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    implementation(Libs.Accompanist.pager)
+    implementation("com.google.accompanist:accompanist-pager:0.25.0")
 
-    coreLibraryDesugaring(Libs.Desugar.jdk) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.6") // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
 
-    testImplementation(Libs.Test.junit)
-    androidTestImplementation(Libs.AndroidTest.junit)
-    androidTestImplementation(Libs.AndroidTest.espresso)
-    androidTestImplementation(Libs.AndroidTest.compose)
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.2")
 }
 
 afterEvaluate {
