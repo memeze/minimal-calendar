@@ -1,7 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     id("kotlin-android")
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -52,23 +53,20 @@ android {
 dependencies {
     implementation(project(":minimalcalendar"))
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.compose)
 
-    val composeBom = platform("androidx.compose:compose-bom:2022.10.00")
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
-    implementation("androidx.compose.material:material")
-    implementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    /** Compose */
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
+    implementation(libs.compose.material)
+    debugImplementation(libs.compose.ui.tooling)
 
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.6") // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.2")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    coreLibraryDesugaring(libs.desugar.jdk.libs) // Java 8+ API desugaring support (Android Gradle Plugin 4.0.0+)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
